@@ -59,7 +59,7 @@
     },
     "author_uuid": {
       "type": "string",
-      "required": true
+      "required": false
     },
     "users_permissions_user": {
       "type": "relation",

@@ -4,7 +4,7 @@
   "version": "0.1.0",
   "description": "The Rock Digital Strapi",
   "scripts": {
-    "develop": "strapi develop",
+    "develop": "DOTENV_CONFIG_PATH=.local.env node -r dotenv/config ./node_modules/@strapi/strapi/bin/strapi.js develop",
     "start": "strapi start",
     "build": "strapi build",
     "strapi": "strapi"
