@@ -1,0 +1,44 @@
+{
+  "kind": "collectionType",
+  "collectionName": "audits",
+  "info": {
+    "singularName": "audit",
+    "pluralName": "audits",
+    "displayName": "Audit",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "businessName": {
+      "type": "string",
+      "required": true
+    },
+    "url": {
+      "type": "string",
+      "required": true
+    },
+    "visitors": {
+      "type": "string",
+      "required": true
+    },
+    "conversion": {
+      "type": "string",
+      "required": true
+    },
+    "email": {
+      "type": "email",
+      "required": true
+    },
+    "uuid": {
+      "type": "string",
+      "required": true
+    }
+  }
+}

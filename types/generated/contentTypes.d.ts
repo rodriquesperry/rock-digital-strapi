@@ -369,6 +369,38 @@ export interface AdminUser extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiAuditAudit extends Struct.CollectionTypeSchema {
+  collectionName: 'audits';
+  info: {
+    description: '';
+    displayName: 'Audit';
+    pluralName: 'audits';
+    singularName: 'audit';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    businessName: Schema.Attribute.String & Schema.Attribute.Required;
+    conversion: Schema.Attribute.String & Schema.Attribute.Required;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    email: Schema.Attribute.Email & Schema.Attribute.Required;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<'oneToMany', 'api::audit.audit'> &
+      Schema.Attribute.Private;
+    name: Schema.Attribute.String & Schema.Attribute.Required;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    url: Schema.Attribute.String & Schema.Attribute.Required;
+    uuid: Schema.Attribute.String & Schema.Attribute.Required;
+    visitors: Schema.Attribute.String & Schema.Attribute.Required;
+  };
+}
+
 export interface ApiLeadLead extends Struct.CollectionTypeSchema {
   collectionName: 'leads';
   info: {
@@ -1026,6 +1058,7 @@ declare module '@strapi/strapi' {
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
+      'api::audit.audit': ApiAuditAudit;
       'api::lead.lead': ApiLeadLead;
       'api::portfolio-item.portfolio-item': ApiPortfolioItemPortfolioItem;
       'api::post.post': ApiPostPost;
