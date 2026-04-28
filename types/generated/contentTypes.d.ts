@@ -489,6 +489,7 @@ export interface ApiPostPost extends Struct.CollectionTypeSchema {
     author_image: Schema.Attribute.Media<'images'>;
     author_uuid: Schema.Attribute.String;
     body: Schema.Attribute.RichText;
+    category: Schema.Attribute.String;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;

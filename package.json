@@ -7,11 +7,13 @@
     "develop": "DOTENV_CONFIG_PATH=.local.env node -r dotenv/config ./node_modules/@strapi/strapi/bin/strapi.js develop",
     "start": "strapi start",
     "build": "strapi build",
+    "migrate:uploads:spaces": "node -r dotenv/config ./scripts/migrate-local-uploads-to-spaces.js",
     "strapi": "DOTENV_CONFIG_PATH=.local.env node -r dotenv/config ./node_modules/@strapi/strapi/bin/strapi.js",
     "strapi:local": "DOTENV_CONFIG_PATH=.local.env node -r dotenv/config ./node_modules/@strapi/strapi/bin/strapi.js"
   },
   "dependencies": {
     "@strapi/plugin-users-permissions": "^5.7.0",
+    "@strapi/provider-upload-aws-s3": "^5.8.0",
     "@strapi/strapi": "5.8.0",
     "@types/react": "^18.3.18",
     "esbuild": "^0.24.2",
@@ -32,9 +34,9 @@
     "uuid": "7a22f181-abe1-48e2-a51a-712f989b6dc4"
   },
   "engines": {
-  "node": ">=20.17.0 || >=22.9.0",
-  "npm": "^10.2.0"
-},
+    "node": ">=20.17.0 || >=22.9.0",
+    "npm": "^10.2.0"
+  },
   "license": "MIT",
   "devDependencies": {
     "esbuild-register": "^3.6.0"

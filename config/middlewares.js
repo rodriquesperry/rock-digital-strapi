@@ -1,6 +1,59 @@
-module.exports = [
+const normalizeUrl = (value) => {
+  if (!value) {
+    return undefined;
+  }
+
+  return value.trim().replace(/\/+$/, "");
+};
+
+const toOrigin = (value) => {
+  if (!value) {
+    return undefined;
+  }
+
+  try {
+    return new URL(value).origin;
+  } catch (error) {
+    return undefined;
+  }
+};
+
+const getMediaSources = (env) => {
+  const bucket = env("SPACES_BUCKET");
+  const region = env("SPACES_REGION");
+  const sources = new Set(["'self'", "data:", "blob:", "dl.airtable.com"]);
+
+  [
+    env("SPACES_BASE_URL"),
+    env("SPACES_ENDPOINT"),
+    bucket && region
+      ? `https://${bucket}.${region}.digitaloceanspaces.com`
+      : undefined,
+  ]
+    .map(normalizeUrl)
+    .map(toOrigin)
+    .filter(Boolean)
+    .forEach((origin) => {
+      sources.add(origin);
+    });
+
+  return Array.from(sources);
+};
+
+module.exports = ({ env }) => [
   "strapi::errors",
-  "strapi::security",
+  {
+    name: "strapi::security",
+    config: {
+      contentSecurityPolicy: {
+        useDefaults: true,
+        directives: {
+          "img-src": getMediaSources(env),
+          "media-src": getMediaSources(env),
+        },
+      },
+    },
+  },
   "strapi::poweredBy",
   {
     name: "strapi::cors",
