@@ -85,3 +85,5 @@ module.exports = (config) =>
     },
     plugins: [prismCompatVitePlugin()],
   });
+
+  // config
