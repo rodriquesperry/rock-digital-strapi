@@ -12,6 +12,12 @@ npm run develop
 yarn develop
 ```
 
+This uses the primary `.env` file. If you want to boot against the local MySQL config in `.local.env`, use:
+
+```
+npm run develop:local
+```
+
 ### `start`
 
 Start your Strapi application with autoReload disabled. [Learn more](https://docs.strapi.io/developer-docs/latest/developer-resources/cli/CLI.html#strapi-start)
@@ -35,6 +41,18 @@ yarn build
 ## ⚙️ Deployment
 
 Strapi gives you many possible deployment options for your project. Find the one that suits you on the [deployment section of the documentation](https://docs.strapi.io/developer-docs/latest/setup-deployment-guides/deployment.html).
+
+## Client Portal
+
+This repo uses a hybrid portal approach:
+
+- Strapi remains the CMS for the website and editorial content
+- Supabase owns client auth, portal data, and private document storage
+
+Implementation details live here:
+
+- [docs/client-portal-integration.md](docs/client-portal-integration.md)
+- [supabase/README.md](supabase/README.md)
 
 ## 📚 Learn more
 

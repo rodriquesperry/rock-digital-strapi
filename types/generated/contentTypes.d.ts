@@ -392,6 +392,7 @@ export interface ApiAuditAudit extends Struct.CollectionTypeSchema {
       Schema.Attribute.Private;
     name: Schema.Attribute.String & Schema.Attribute.Required;
     publishedAt: Schema.Attribute.DateTime;
+    supabase_user_id: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -433,6 +434,7 @@ export interface ApiLeadLead extends Struct.CollectionTypeSchema {
     phone_num: Schema.Attribute.String;
     publishedAt: Schema.Attribute.DateTime;
     service: Schema.Attribute.String;
+    supabase_user_id: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;

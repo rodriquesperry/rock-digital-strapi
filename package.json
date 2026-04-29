@@ -4,11 +4,12 @@
   "version": "0.1.0",
   "description": "The Rock Digital Strapi",
   "scripts": {
-    "develop": "DOTENV_CONFIG_PATH=.local.env node -r dotenv/config ./node_modules/@strapi/strapi/bin/strapi.js develop",
+    "develop": "strapi develop",
+    "develop:local": "DOTENV_CONFIG_PATH=.local.env node -r dotenv/config ./node_modules/@strapi/strapi/bin/strapi.js develop",
     "start": "strapi start",
     "build": "strapi build",
     "migrate:uploads:spaces": "node -r dotenv/config ./scripts/migrate-local-uploads-to-spaces.js",
-    "strapi": "DOTENV_CONFIG_PATH=.local.env node -r dotenv/config ./node_modules/@strapi/strapi/bin/strapi.js",
+    "strapi": "strapi",
     "strapi:local": "DOTENV_CONFIG_PATH=.local.env node -r dotenv/config ./node_modules/@strapi/strapi/bin/strapi.js"
   },
   "dependencies": {
@@ -25,6 +26,7 @@
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.28.2",
     "rimraf": "^6.0.1",
+    "strapi-plugin-rich-text-blocks-extended": "^1.2.0",
     "styled-components": "^6.1.14"
   },
   "author": {

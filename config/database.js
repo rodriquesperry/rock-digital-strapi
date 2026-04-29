@@ -7,7 +7,15 @@ const resolveCertificatePath = (certificatePath) =>
     : path.resolve(process.cwd(), certificatePath);
 
 const getSslConfig = (env) => {
-  if (!env.bool("DATABASE_SSL", false)) {
+  const shouldUseSsl =
+    env.bool("DATABASE_SSL", false) ||
+    Boolean(
+      env("CA_CERT_BASE64") ||
+        env("DATABASE_CA_PATH") ||
+        env("DATABASE_SSL_SELF"),
+    );
+
+  if (!shouldUseSsl) {
     return false;
   }
 

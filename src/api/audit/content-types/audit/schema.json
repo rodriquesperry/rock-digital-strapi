@@ -36,6 +36,10 @@
       "type": "email",
       "required": true
     },
+    "supabase_user_id": {
+      "type": "string",
+      "required": false
+    },
     "uuid": {
       "type": "string",
       "required": true

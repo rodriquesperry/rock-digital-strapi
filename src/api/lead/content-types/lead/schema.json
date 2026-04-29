@@ -35,6 +35,10 @@
       "default": false,
       "required": true
     },
+    "supabase_user_id": {
+      "type": "string",
+      "required": false
+    },
     "lead_uuid": {
       "type": "string",
       "required": true,
