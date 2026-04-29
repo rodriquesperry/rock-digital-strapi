@@ -16,10 +16,6 @@
       "type": "boolean",
       "default": false
     },
-    "body": {
-      "type": "richtext",
-      "required": false
-    },
     "featured_image": {
       "type": "media",
       "multiple": false,
@@ -76,6 +72,9 @@
     },
     "category": {
       "type": "string"
+    },
+    "body": {
+      "type": "blocks"
     }
   }
 }

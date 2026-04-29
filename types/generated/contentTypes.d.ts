@@ -490,7 +490,7 @@ export interface ApiPostPost extends Struct.CollectionTypeSchema {
       Schema.Attribute.DefaultTo<'Rock Digital'>;
     author_image: Schema.Attribute.Media<'images'>;
     author_uuid: Schema.Attribute.String;
-    body: Schema.Attribute.RichText;
+    body: Schema.Attribute.Blocks;
     category: Schema.Attribute.String;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
