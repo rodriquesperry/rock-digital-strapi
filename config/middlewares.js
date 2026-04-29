@@ -18,14 +18,36 @@ const toOrigin = (value) => {
   }
 };
 
+const getRegionFromEndpoint = (endpoint) => {
+  const match = endpoint?.match(
+    /^https?:\/\/([a-z0-9-]+)\.digitaloceanspaces\.com/i,
+  );
+
+  return match?.[1];
+};
+
+const normalizeSpacesRegion = (value) => {
+  if (!value) {
+    return undefined;
+  }
+
+  const normalized = value.trim().toLowerCase();
+  const appPlatformRegionMatch = normalized.match(/^us-([a-z]{3}\d)$/);
+
+  return appPlatformRegionMatch?.[1] ?? normalized;
+};
+
 const getMediaSources = (env) => {
   const bucket = env("SPACES_BUCKET");
-  const region = env("SPACES_REGION");
+  const endpoint = normalizeUrl(env("SPACES_ENDPOINT"));
+  const region = normalizeSpacesRegion(
+    getRegionFromEndpoint(endpoint) ?? env("SPACES_REGION"),
+  );
   const sources = new Set(["'self'", "data:", "blob:", "dl.airtable.com"]);
 
   [
     env("SPACES_BASE_URL"),
-    env("SPACES_ENDPOINT"),
+    endpoint,
     bucket && region
       ? `https://${bucket}.${region}.digitaloceanspaces.com`
       : undefined,
