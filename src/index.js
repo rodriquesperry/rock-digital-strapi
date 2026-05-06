@@ -115,6 +115,21 @@ const migratePostBodyFieldToBlocks = async (strapi) => {
   );
 };
 
+const logUploadProvider = (strapi) => {
+  const uploadConfig = strapi.config.get('plugin::upload') || {};
+  const providerOptions = uploadConfig.providerOptions || {};
+  const s3Options = providerOptions.s3Options || {};
+  const bucket = s3Options.params?.Bucket;
+
+  strapi.log.info(
+    `Upload provider: ${uploadConfig.provider || 'local'}${
+      bucket ? ` bucket=${bucket}` : ''
+    }${s3Options.endpoint ? ` endpoint=${s3Options.endpoint}` : ''}${
+      providerOptions.baseUrl ? ` baseUrl=${providerOptions.baseUrl}` : ''
+    }`,
+  );
+};
+
 module.exports = {
   /**
    * An asynchronous register function that runs before
@@ -135,5 +150,7 @@ module.exports = {
    * This gives you an opportunity to set up your data model,
    * run jobs, or perform some special logic.
    */
-  bootstrap(/*{ strapi }*/) {},
+  bootstrap({ strapi }) {
+    logUploadProvider(strapi);
+  },
 };

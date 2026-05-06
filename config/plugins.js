@@ -55,6 +55,7 @@ const requireSpacesEnv = (values) => {
 
 module.exports = ({ env }) => {
   const bucket = env("SPACES_BUCKET");
+  const isProduction = env("NODE_ENV") === "production";
   const accessKeyId = firstEnv(env, [
     "SPACES_ACCESS_KEY_ID",
     "SPACES_ACCESS_KEY",
@@ -86,6 +87,12 @@ module.exports = ({ env }) => {
   );
 
   if (!bucket) {
+    if (isProduction && !env.bool("ALLOW_LOCAL_UPLOADS", false)) {
+      throw new Error(
+        "SPACES_BUCKET is required in production so uploaded media persists. Set ALLOW_LOCAL_UPLOADS=true only if you intentionally want local disk uploads.",
+      );
+    }
+
     return {};
   }
 

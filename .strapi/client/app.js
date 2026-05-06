@@ -3,12 +3,14 @@
  * Any modifications made will be discarded.
  */
 import usersPermissions from "@strapi/plugin-users-permissions/strapi-admin";
+import mediaExtended from "strapi-plugin-media-extended/strapi-admin";
 import richTextBlocksExtended from "strapi-plugin-rich-text-blocks-extended/strapi-admin";
 import { renderAdmin } from "@strapi/strapi/admin";
 
 renderAdmin(document.getElementById("strapi"), {
   plugins: {
     "users-permissions": usersPermissions,
+    "media-extended": mediaExtended,
     "rich-text-blocks-extended": richTextBlocksExtended,
   },
 });
