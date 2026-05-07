@@ -402,6 +402,35 @@ export interface ApiAuditAudit extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiChecklistLeadChecklistLead
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'checklist_leads';
+  info: {
+    displayName: 'Checklist Lead';
+    pluralName: 'checklist-leads';
+    singularName: 'checklist-lead';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    email: Schema.Attribute.Email & Schema.Attribute.Required;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::checklist-lead.checklist-lead'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiLeadLead extends Struct.CollectionTypeSchema {
   collectionName: 'leads';
   info: {
@@ -1064,6 +1093,7 @@ declare module '@strapi/strapi' {
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
       'api::audit.audit': ApiAuditAudit;
+      'api::checklist-lead.checklist-lead': ApiChecklistLeadChecklistLead;
       'api::lead.lead': ApiLeadLead;
       'api::portfolio-item.portfolio-item': ApiPortfolioItemPortfolioItem;
       'api::post.post': ApiPostPost;
