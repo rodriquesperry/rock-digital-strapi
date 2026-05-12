@@ -15,9 +15,9 @@
   "dependencies": {
     "@strapi/plugin-users-permissions": "^5.7.0",
     "@strapi/provider-upload-aws-s3": "^5.8.0",
-    "@strapi/strapi": "5.8.0",
+    "@strapi/strapi": "^5.45.1",
     "@types/react": "^18.3.18",
-    "esbuild": "^0.24.2",
+    "esbuild": "^0.28.0",
     "glob": "^11.0.0",
     "inflight": "^1.0.6",
     "mysql": "2.18.1",
@@ -27,7 +27,7 @@
     "react-router-dom": "^6.28.2",
     "rimraf": "^6.0.1",
     "strapi-plugin-media-extended": "^1.0.1",
-    "strapi-plugin-rich-text-blocks-extended": "^1.2.0",
+    "strapi-plugin-rich-text-blocks-extended": "^1.1.0",
     "styled-components": "^6.1.14"
   },
   "author": {
