@@ -32,8 +32,8 @@
     },
     "active": {
       "type": "boolean",
-      "default": false,
-      "required": true
+      "required": true,
+      "default": false
     },
     "supabase_user_id": {
       "type": "string",
@@ -43,6 +43,27 @@
       "type": "string",
       "required": true,
       "unique": true
+    },
+    "company_name": {
+      "type": "string"
+    },
+    "website_url": {
+      "type": "string"
+    },
+    "monthly_marketing_investment": {
+      "type": "string"
+    },
+    "project_timeline": {
+      "type": "string"
+    },
+    "business_description": {
+      "type": "string"
+    },
+    "action_prompt": {
+      "type": "string"
+    },
+    "growth_investment_acknowledgement": {
+      "type": "boolean"
     }
   }
 }

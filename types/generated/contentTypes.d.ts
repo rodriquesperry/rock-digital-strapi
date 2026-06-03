@@ -514,9 +514,12 @@ export interface ApiLeadLead extends Struct.CollectionTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
+    action_prompt: Schema.Attribute.String;
     active: Schema.Attribute.Boolean &
       Schema.Attribute.Required &
       Schema.Attribute.DefaultTo<false>;
+    business_description: Schema.Attribute.String;
+    company_name: Schema.Attribute.String;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -524,20 +527,24 @@ export interface ApiLeadLead extends Struct.CollectionTypeSchema {
     email: Schema.Attribute.Email &
       Schema.Attribute.Required &
       Schema.Attribute.Unique;
+    growth_investment_acknowledgement: Schema.Attribute.Boolean;
     lead_uuid: Schema.Attribute.String &
       Schema.Attribute.Required &
       Schema.Attribute.Unique;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<'oneToMany', 'api::lead.lead'> &
       Schema.Attribute.Private;
+    monthly_marketing_investment: Schema.Attribute.String;
     name: Schema.Attribute.String & Schema.Attribute.Required;
     phone_num: Schema.Attribute.String;
+    project_timeline: Schema.Attribute.String;
     publishedAt: Schema.Attribute.DateTime;
     service: Schema.Attribute.String;
     supabase_user_id: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    website_url: Schema.Attribute.String;
   };
 }
 
