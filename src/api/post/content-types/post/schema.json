@@ -75,6 +75,9 @@
     },
     "body": {
       "type": "blocks"
+    },
+    "author_bio": {
+      "type": "blocks"
     }
   }
 }

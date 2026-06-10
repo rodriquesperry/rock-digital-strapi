@@ -595,6 +595,7 @@ export interface ApiPostPost extends Struct.CollectionTypeSchema {
   attributes: {
     author: Schema.Attribute.String &
       Schema.Attribute.DefaultTo<'Rock Digital'>;
+    author_bio: Schema.Attribute.Blocks;
     author_image: Schema.Attribute.Media<'images'>;
     author_uuid: Schema.Attribute.String;
     body: Schema.Attribute.Blocks;
