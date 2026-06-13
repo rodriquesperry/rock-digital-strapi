@@ -485,6 +485,10 @@ export interface ApiChecklistLeadChecklistLead
     draftAndPublish: true;
   };
   attributes: {
+    checklistKey: Schema.Attribute.Enumeration<
+      ['premium-website-launch-checklist', 'digital-marketing-guide']
+    > &
+      Schema.Attribute.DefaultTo<'digital-marketing-guide'>;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
